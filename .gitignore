@@ -5,7 +5,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Dados e saídas locais
-data/
+#data/
 *.csv
 
 # Ambiente local
