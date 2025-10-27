@@ -16,6 +16,13 @@ import os
 st.write("📂 Diretório atual:", os.getcwd())
 st.write("📁 Conteúdo:", os.listdir(os.getcwd()))
 
+st.write("🔍 Tentando abrir data/organic_results.csv...")
+try:
+    test_df = pd.read_csv("data/organic_results.csv")
+    st.success(f"✅ Carregado com {len(test_df)} linhas")
+except Exception as e:
+    st.error(f"❌ Erro ao abrir arquivo: {e}")
+
 # --- Caminho dos dados ---
 DATA_PATH = "/data/"
 
