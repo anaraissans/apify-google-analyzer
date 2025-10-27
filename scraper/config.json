@@ -1,0 +1,17 @@
+{
+  "actor_id": "apify/google-search-scraper",
+  "max_pages_per_query": 2,
+  "country_code": "br",
+  "language_code": "pt-BR",
+  "include_unfiltered_results": false,
+  "mobile_results": false,
+  "save_html": false,
+  "terms": [
+    "Corinthians",
+    "timão",
+    "SCCP",
+    "Sport Clube Corinthians Paulista",
+    "neo quimica arena",
+    "gavioes da fiel"
+  ]
+}

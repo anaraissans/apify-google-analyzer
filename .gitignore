@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Dados e saídas locais
+data/
+*.csv
+
+# Ambiente local
+.env
+.venv/
+venv/
+
+# Streamlit cache
+.streamlit/
