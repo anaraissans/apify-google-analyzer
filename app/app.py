@@ -12,17 +12,6 @@ st.set_page_config(page_title="Google Analyzer - Termos e Resultados", layout="w
 st.title("🔍 Google Analyzer - Termos e Resultados")
 st.write("Explore os resultados extraídos pelo scraper do Google via Apify.")
 
-import os
-st.write("📂 Diretório atual:", os.getcwd())
-st.write("📁 Conteúdo:", os.listdir(os.getcwd()))
-
-st.write("🔍 Tentando abrir data/organic_results.csv...")
-try:
-    test_df = pd.read_csv("data/organic_results.csv")
-    st.success(f"✅ Carregado com {len(test_df)} linhas")
-except Exception as e:
-    st.error(f"❌ Erro ao abrir arquivo: {e}")
-
 # --- Caminho dos dados ---
 DATA_PATH = "/data/"
 
@@ -30,14 +19,24 @@ DATA_PATH = "/data/"
 # --- Carregar arquivos ---
 @st.cache_data
 def load_data():
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(base_path, "../data")  # tenta primeiro o caminho local
+
+    # Se não encontrar, tenta no mesmo diretório do deploy (Streamlit Cloud)
+    if not os.path.exists(data_path):
+        data_path = os.path.join(base_path, "data")
+
+    st.write(f"📂 Lendo dados de: {data_path}")
+
     dfs = {}
     try:
-        dfs["organic"] = pd.read_csv(os.path.join(DATA_PATH, "organic_results.csv"))
-        dfs["paa"] = pd.read_csv(os.path.join(DATA_PATH, "people_also_ask.csv"))
-        dfs["related"] = pd.read_csv(os.path.join(DATA_PATH, "related_queries_clean.csv"))
+        dfs["organic"] = pd.read_csv(os.path.join(data_path, "organic_results.csv"))
+        dfs["paa"] = pd.read_csv(os.path.join(data_path, "people_also_ask.csv"))
+        dfs["related"] = pd.read_csv(os.path.join(data_path, "related_queries_clean.csv"))
         st.success("✅ Dados carregados com sucesso!")
-    except FileNotFoundError:
+    except FileNotFoundError as e:
         st.warning("⚠️ Nenhum dado encontrado. Rode o scraper primeiro.")
+        st.error(str(e))
         return None
     return dfs
 
