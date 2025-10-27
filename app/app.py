@@ -13,7 +13,7 @@ st.title("🔍 Google Analyzer - Termos e Resultados")
 st.write("Explore os resultados extraídos pelo scraper do Google via Apify.")
 
 # --- Caminho dos dados ---
-DATA_PATH = "../data/"
+DATA_PATH = "/data/"
 
 
 # --- Carregar arquivos ---
