@@ -6,7 +6,7 @@ __pycache__/
 
 # Dados e saídas locais
 #data/
-*.csv
+#*.csv
 
 # Ambiente local
 .env
