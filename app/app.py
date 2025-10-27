@@ -12,6 +12,10 @@ st.set_page_config(page_title="Google Analyzer - Termos e Resultados", layout="w
 st.title("🔍 Google Analyzer - Termos e Resultados")
 st.write("Explore os resultados extraídos pelo scraper do Google via Apify.")
 
+import os
+st.write("📂 Diretório atual:", os.getcwd())
+st.write("📁 Conteúdo:", os.listdir(os.getcwd()))
+
 # --- Caminho dos dados ---
 DATA_PATH = "/data/"
 
